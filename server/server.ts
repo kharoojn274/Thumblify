@@ -17,9 +17,13 @@ await connectDB();
 const app = express();
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:3000"],
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:3000",
+      "https://thumblify-beta.vercel.app",
+    ],
     credentials: true,
-  })
+  }),
 );
 
 app.use(
@@ -32,7 +36,7 @@ app.use(
       mongoUrl: process.env.MONGODB_URI as string,
       collectionName: "sessions",
     }),
-  })
+  }),
 );
 
 app.use(express.json());
